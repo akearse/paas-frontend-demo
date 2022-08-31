@@ -11,6 +11,8 @@ import {
 import { User } from "../types/user.type";
 import { httpClient } from "../utils/httpclient";
 import { LoginResult } from "../types/authen.type";
+import { Buffer } from "buffer";
+import axios from "axios";
 
 export const setLoginFetchingToState = () => ({
     type: LOGIN_FETCHING,
@@ -29,15 +31,29 @@ export const setLoginFetchingToState = () => ({
     type: LOGOUT,
   });
 
+  // encode, decode string V1
+  const encodedString = new Buffer('P5274;Ake_0822').toString('base64');
+  const decodeString = new Buffer('UDUyNzQ7QWtlXzA4MjI=','base64').toString('utf8');
+
+  // encode, decode string V2
+  const encoded = Buffer.from('P5274;Ake_0822', 'utf8').toString('base64');
+  const plain = Buffer.from('UDUyNzQ7QWtlXzA4MjI=', 'base64').toString('utf8');
+
   export const login = (user: User, navigate: any) => {
-    return async (dispatch: any) => {
+    return async (dispatch: any) => { 
       try {
+
         // begin connecting...
         dispatch(setLoginFetchingToState());
+
         // connect
         const result = await httpClient.post<LoginResult>(server.LOGIN_URL, user);
         if (result.data.result === OK) {
           setTimeout(() => {
+            console.log("result");
+            console.log(result);
+
+            // set TOKEN
             localStorage.setItem(TOKEN, result.data.token!);
             dispatch(setLoginSuccessToState(result.data));
             //alert("Login Successfully");

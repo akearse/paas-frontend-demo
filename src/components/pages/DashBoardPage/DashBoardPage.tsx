@@ -7,55 +7,16 @@ import {
 } from "@mui/x-data-grid";
 import axios from "axios";
 import { imageUrl } from "../../../Constants";
-
-const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", width: 70 },
-  {
-    field: "image",
-    headerName: "IMAGE",
-    width: 100,
-    renderCell: ({ value }: GridRenderCellParams<string>) => {
-      return (
-        <img
-          src={`${imageUrl}/images/${value}?dummy=${Math.random()}`}
-          style={{ width: 70, height: 70, borderRadius: "5%" }}
-        />
-      );
-    },
-  },
-  { field: "name", headerName: "NAME", width: 400 },
-  { field: "price", headerName: "PRICE", width: 130 },
-  { field: "stock", headerName: "STOCK", width: 130 },
-];
-
-// const rows = [
-//   { id: 1, name: "Snow", price: "Jon", stock: 35 },
-//   { id: 2, name: "Snow2", price: "Jon", stock: 35 },
-//   { id: 3, name: "Snow3", price: "Jon", stock: 35 },
-// ];
+import { Box } from "@mui/material";
+import Welcome from "../../layouts/Welcome";
+import ServiceStatus from "../../layouts/ServiceStatus";
 
 export default function DashBoardPage() {
-  const [rows, setRows] = React.useState([]);
-
-  React.useEffect(() => {
-    axios.get("http://localhost:8085/api/v2/stock/product").then((result) => {
-      setRows(result.data);
-    });
-  }, []);
-
   return (
-    <div style={{ height: 500, width: "100%" }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={7}
-        rowsPerPageOptions={[7]}
-        checkboxSelection
-      />
-    </div>
-
-    // <>
-    //   <div>DashBoard Page</div>
-    // </>
+    <>
+      <Welcome />
+      <div style={{ paddingBottom: 10 }}></div>
+      <ServiceStatus />
+    </>
   );
 }

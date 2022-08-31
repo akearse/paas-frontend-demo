@@ -51,3 +51,6 @@ export const NETWORK_TIMEOUT_MESSAGE =
   "A network timeout has occurred, Please try again.";
 export const UPLOAD_PHOTO_FAIL_MESSAGE =
   "An error has occurred. The photo was unable to upload.";
+
+// color for CSS
+export const GREY = "#9E9E9E";

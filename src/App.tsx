@@ -51,9 +51,9 @@ const theme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundImage:
-            "url(" + `${process.env.PUBLIC_URL}/images/bg-menu.jpg` + ")",
-          width: drawerWidth,
+          // backgroundImage:
+          //   "url(" + `${process.env.PUBLIC_URL}/images/bg-menu.jpg` + ")",
+          // width: drawerWidth,
         },
       },
     },
@@ -67,7 +67,7 @@ const theme = createTheme({
   },
   spacing: 8,
   palette: {
-    primary: process.env.REACT_APP_IS_PRODUCTION == "0" ? blue : blueGrey,
+    // primary: process.env.REACT_APP_IS_PRODUCTION == "0" ? blue : blueGrey,
     background: {
       default: "#EEF3F9",
     },
@@ -113,7 +113,19 @@ export default function App() {
           <Menu open={open} onDrawerClose={handleDrawerClose} />
         )}
 
-        <Main open={open}>
+        <Main
+          open={open}
+          sx={
+            {
+              // backgroundImage:
+              //   "url(" + `${process.env.PUBLIC_URL}/images/bg-login.png` + ")",
+              // height: "100vh",
+              // backgroundPosition: "center",
+              // backgroundRepeat: "cover",
+              // backgroundSize: "cover",
+            }
+          }
+        >
           <DrawerHeader />
           <Routes>
             {/* Public routes */}

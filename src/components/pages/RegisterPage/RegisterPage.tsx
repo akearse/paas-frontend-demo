@@ -133,7 +133,7 @@ const RegisterPage: React.FC<any> = () => {
     );
   };
 
-  const initialValues: User = { username: "", password: "" };
+  const initialValues: User = { username: "", password: "", encodebase64: "" };
 
   return (
     <>

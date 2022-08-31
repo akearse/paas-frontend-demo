@@ -1,0 +1,18 @@
+.welcome-text-success {
+   
+  color: rgb(26, 196, 63);
+}
+
+.welcome-text-fail {
+  
+  color: rgb(221, 17, 17);
+}
+
+.welcome-text-primary {
+  
+  color: rgb(0, 89, 255);
+}
+
+.welcome-hr {
+  border-top: 1px solid rgb(0, 0, 0);
+}
