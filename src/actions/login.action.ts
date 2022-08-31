@@ -64,7 +64,7 @@ export const setLoginFetchingToState = () => ({
         }
       } catch (error) {
         // error
-        dispatch(setLoginFailedToState());
+        dispatch(setLoginFailedToState()); 
       }
     };
   };
